@@ -39,11 +39,12 @@ for emoji in emojispans:
     file_ext = os.path.splitext(split_emoji[5])[1]
     
     # this handles specifying a single emoji to download
-    if args.emojiname and args.emojiname == emoji_name:
-        if args.verbose:
-            print emoji_name + " : " + emoji_url
-            #print emoji_url
-            #print file_ext
-        urllib.urlretrieve(emoji_url, "slack_emoji/"+emoji_name+file_ext)
+    if args.emojiname and not args.emojiname == emoji_name:
+        continue
+    if args.verbose:
+        print emoji_name + " : " + emoji_url
+        #print emoji_url
+        #print file_ext
+    urllib.urlretrieve(emoji_url, "slack_emoji/"+emoji_name+file_ext)
 driver.close()
 driver.quit()
